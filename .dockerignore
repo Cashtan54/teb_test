@@ -1,0 +1,5 @@
+.venv
+.git
+.gitignore
+.data
+.users.sqlite3

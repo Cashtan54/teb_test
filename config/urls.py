@@ -19,6 +19,7 @@ from tg_auth import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.LoginView.as_view(), name='login'),
-    path('user_data/<username>/', views.user_data, name='user_data')
+    path('login/', views.Login.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
+    path('user-tg/', views.UserTgView.as_view(), name='user-tg'),
 ]

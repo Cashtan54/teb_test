@@ -29,7 +29,7 @@ SECRET_KEY = getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-18-133-141-106.eu-west-2.compute.amazonaws.com', '127.0.0.1', '18.133.141.106']
 
 
 # Application definition
@@ -80,34 +80,29 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'users.sqlite3',
+    }
+}
 
 AIRTABLE_ID = getenv('AIRTABLE_ID')
 AIRTABLE_KEY = getenv('AIRTABLE_KEY')
 
 
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/user-tg'
+
+LOGOUT_REDIRECT_URL = '/login/'
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+
+AUTH_USER_MODEL = 'tg_auth.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

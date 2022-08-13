@@ -1,8 +1,9 @@
 from django.conf import settings
 from aiogram import Bot, Dispatcher, executor, types
+from django.contrib.auth.hashers import check_password
 from django.core.signing import Signer
-
-from .models import UserRecord
+from .models import UserAirtable, User
+from asgiref.sync import sync_to_async
 
 bot = Bot(token=settings.TG_TOKEN)
 dp = Dispatcher(bot)
@@ -13,15 +14,15 @@ def save_object(user_object):
 
 
 async def get_user_object(user):
-    user_in_base = list(UserRecord.objects.filter(tg_id=user.id))
+    user_in_base = list(UserAirtable.objects.filter(tg_id=user.id))
     if user_in_base:
-        return next(iter(user_in_base))
+        return user_in_base[0]
 
 
 async def create_user_object(user):
     signer = Signer(salt='airtable')
     key = signer.sign(user.username)
-    user_inst = UserRecord(
+    user_inst = UserAirtable(
         tg_username=user.username,
         tg_id=str(user.id),
         tg_name=user.first_name,
@@ -29,6 +30,15 @@ async def create_user_object(user):
     )
     save_object(user_inst)
     return user_inst
+
+
+@sync_to_async
+def change_password(user):
+    django_user = User.objects.get(username=user.tg_username)
+    django_user.set_password(user.password)
+    django_user.save()
+    print(check_password(user.password, django_user.password))
+    return django_user
 
 
 @dp.message_handler(commands="start")
@@ -50,6 +60,7 @@ async def set_password(message: types.Message):
     user = await get_user_object(message.from_user)
     user.password = message.text
     save_object(user)
+    await change_password(user)
 
 
 def start_bot():

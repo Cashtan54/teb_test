@@ -4,7 +4,11 @@ from pyrtable.record import BaseRecord
 from pyrtable.fields import StringField, BooleanField
 
 
-class UserRecord(BaseRecord):
+class User(AbstractUser):
+    pass
+
+
+class UserAirtable(BaseRecord):
     class Meta:
         base_id = settings.AIRTABLE_ID
         table_id = 'User'
