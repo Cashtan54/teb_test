@@ -12,6 +12,7 @@ body {
 		linear-gradient(-90deg, coral, transparent);
     padding: 0;
     margin: 0;
+    color: #2A2A2AFF;
 }
 
 /* Input Forms */
@@ -158,4 +159,86 @@ body {
 .form-link:focus,
 .form-link:hover{
     color: #70AAB2FF;
+}
+
+/* User Page */
+
+.data-card-wrapp{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+}
+.data-card-wrapp::after{
+    position: absolute;
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    opacity: 0.3;
+    z-index: -1;
+}
+.user__card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
+    height: auto;
+    padding: 50px 20px;
+    background: #fff;
+    border-radius: 15px;
+    transition: 300ms;
+}
+.user__card:focus,
+.user__card:hover {
+    -webkit-box-shadow: 0px 9px 13px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 9px 13px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 13px -3px rgba(0,0,0,0.75);
+}
+.card-user-name{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+.card-user{
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+.card-btn{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-radius: 30px;
+    border: none;
+    color: #2A2A2AFF;
+    text-decoration: none;
+    background-blend-mode: screen;
+    background:
+    linear-gradient(limegreen, transparent),
+    linear-gradient(90deg, skyblue, transparent),
+    linear-gradient(-90deg, coral, transparent);
+}
+.card-btn::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s;
+    background: linear-gradient(-45deg, transparent, rgba(191, 226, 255, 0.3), transparent);
+}
+.card-btn:hover::after,
+.card-btn:focus::after {
+    left: 100%;
 }

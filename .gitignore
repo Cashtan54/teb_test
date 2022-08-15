@@ -2,3 +2,5 @@
 /.idea/
 /config/.env
 /users.sqlite3
+/tg_auth/static/admin
+/tg_auth/static/rest_framework

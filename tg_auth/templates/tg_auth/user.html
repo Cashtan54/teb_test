@@ -3,8 +3,13 @@
 {% block title %}{{ airtable_user.tg_username }}{% endblock %}
 
 {% block content %}
-    <h1>Hello, {{ airtable_user.tg_username }}</h1>
-    <h4>Your telegram id: {{ airtable_user.tg_id }}</h4>
-    <h4>Your telegram name: {{ airtable_user.tg_name }}</h4>
-    <button class="btn btn-primary"><a href="https://t.me/{{ airtable_user.tg_username }}">Telegram</a></button>
+    <div class="data-card-wrapp">
+        <div class="user__card">
+            <h1 class="card-user-name">Hello, {{ airtable_user.tg_name }}!</h1>
+            <p class="card-user">Your telegram id: {{ airtable_user.tg_id }}</p>
+            <p class="card-user">Your telegram username: {{ airtable_user.tg_username }}</p>
+
+            <a  class="card-btn" href="https://t.me/{{ airtable_user.tg_username }}">Telegram</a>
+        </div>
+    </div>
 {% endblock %}
