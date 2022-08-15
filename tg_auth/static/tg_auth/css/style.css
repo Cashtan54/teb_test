@@ -1,0 +1,161 @@
+/* Body Styles */
+body {
+    font-family: Roboto;
+    position: relative;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-blend-mode: screen;
+	background:
+		linear-gradient(limegreen, transparent),
+		linear-gradient(90deg, skyblue, transparent),
+		linear-gradient(-90deg, coral, transparent);
+    padding: 0;
+    margin: 0;
+}
+
+/* Input Forms */
+.form-content{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    align-items: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 50px 30px;
+}
+.form-wrapp{
+    position: relative;
+    width: 320px;
+}
+.form-input{
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: #F5F5F5FF;
+    border-radius: 30px;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    transition: 250ms;
+}
+.form-input::placeholder{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #9A9A9AFF;
+}
+.form-input:focus::placeholder,
+.form-input:hover::placeholder{
+    color: #70AAB2FF;
+}
+.form-input:hover,
+.form-input:focus {
+    background: #81C4CD38;
+}
+
+/* LOG IN Button */
+.form-btn{
+    position: relative;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    height: 50px;
+    padding: 0;
+    background: #81C4CDFF;
+    color: #fff;
+    overflow: hidden;
+}
+.form-btn::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s;
+    background: linear-gradient(-45deg, transparent, rgba(191, 226, 255, 0.3), transparent);
+}
+.form-btn:hover::after,
+.form-btn:focus::after {
+    left: 100%;
+}
+.form-label{
+    position: absolute;
+    right: 30px;
+    top: 13px;
+}
+.form-password-btn{
+    position: relative;
+    border: none;
+    outline: none;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+}
+.form-password-btn.active.form-password-btn::after{
+    opacity: 0;
+}
+.form-password-btn::after{
+    width: 22px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 4px;
+    background: #9A9A9AFF;
+    transform: rotate(45deg);
+    opacity: 1;
+}
+.checkbox-svg{
+    width: 18px;
+    height: 18px;
+    fill: #9A9A9AFF;
+}
+
+/* Registranion Link*/
+.form-text{
+    margin-top: 40px;
+    font-size: 0.8rem;
+}
+.form-link{
+    position: relative;
+    text-decoration: none;
+    color: #81C4CDFF;
+    transition: 250ms;
+}
+.form-link::after{
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    opacity: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-blend-mode: screen;
+	background:
+		linear-gradient(limegreen, transparent),
+		linear-gradient(90deg, skyblue, transparent),
+		linear-gradient(-90deg, coral, transparent);
+        transition: 250ms;
+}
+.form-link:focus::after,
+.form-link:hover::after{
+    left: 0;
+    opacity: 1;
+}
+.form-link:focus,
+.form-link:hover{
+    color: #70AAB2FF;
+}

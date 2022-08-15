@@ -55,8 +55,8 @@ async def start(message: types.Message):
 
 @dp.message_handler(content_types=['text'])
 async def set_password(message: types.Message):
-    await message.answer(f'Password is successfully updated\n'
-                         f'If you want to change it just write new one')
+    await message.answer('Password is successfully updated\n'
+                         'If you want to change it just write new one')
     user = await get_user_object(message.from_user)
     user.password = message.text
     save_object(user)

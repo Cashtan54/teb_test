@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ec2-18-133-141-106.eu-west-2.compute.amazonaws.com', '127.0.0.1', '18.133.141.106']
 
@@ -93,7 +93,7 @@ AIRTABLE_KEY = getenv('AIRTABLE_KEY')
 
 LOGIN_URL = '/login/'
 
-LOGIN_REDIRECT_URL = '/user-tg'
+LOGIN_REDIRECT_URL = '/user-tg/'
 
 LOGOUT_REDIRECT_URL = '/login/'
 
@@ -119,7 +119,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'tg_auth/static/'
+STATIC_ROOT = path.join(BASE_DIR, 'tg_auth', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
